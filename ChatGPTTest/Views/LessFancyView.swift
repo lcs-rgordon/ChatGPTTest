@@ -23,7 +23,7 @@ struct LessFancyView: View {
                             response = try await getBookRecommendation()
                         }
                     } label: {
-                        Text("Get Book Recommendation")
+                        Text("Get Book Recommendations")
                     }
                     .buttonStyle(.borderedProminent)
 
