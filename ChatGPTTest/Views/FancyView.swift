@@ -47,6 +47,13 @@ struct FancyView: View {
 
                     Button {
                         // Add the book to the list of books the user likes
+                        let newBook = Book(
+                            id: booksAlreadyRead.count + 1,
+                            name: newBookName,
+                            author: newBookAuthor
+                        )
+                        // Add to top of list
+                        booksAlreadyRead.insert(newBook, at: 0)
                     } label: {
                         Text("Add")
                     }
