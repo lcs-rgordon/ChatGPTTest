@@ -34,74 +34,116 @@ struct FancyView: View {
     
     // The response from ChatGPT
     @State private var response: String? = nil
+    @State private var bookSuggestions: [Book] = []
         
     // MARK: Computed properties
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
+            ScrollView {
+                VStack(alignment: .leading) {
 
-                // Controls to add a book the user has liked
-                Group {
-                    Text("Please add a few books that you've liked")
-                        .font(.title3)
-                    TextField("Name of book", text: $newBookName)
-                        .textFieldStyle(.roundedBorder)
-                    TextField("Author of book", text: $newBookAuthor)
-                        .textFieldStyle(.roundedBorder)
+                    // Controls to add a book the user has liked
+                    Group {
+                        Text("What are a few books you've read and liked?")
+                            .font(.title3)
+                            .bold()
+                        TextField("Name of book", text: $newBookName)
+                            .textFieldStyle(.roundedBorder)
+                        TextField("Author of book", text: $newBookAuthor)
+                            .textFieldStyle(.roundedBorder)
 
+                        Button {
+                            // Add the book to the list of books the user likes
+                            let newBook = Book(
+                                id: booksAlreadyRead.count + 1,
+                                name: newBookName,
+                                author: newBookAuthor
+                            )
+                            // Add to top of list
+                            booksAlreadyRead.insert(newBook, at: 0)
+                        } label: {
+                            Text("Add")
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    
+                    // Show the books the user has entered
+                    List(booksAlreadyRead) { book in
+                        VStack(alignment: .leading) {
+                            Text(book.name)
+                                .bold()
+                            Text(book.author)
+                                .font(.subheadline)
+                        }
+                    }
+                    .listStyle(.plain)
+                    .frame(height: 200)
+                                    
+                    // Allow user to ask for book recommendations
                     Button {
-                        // Add the book to the list of books the user likes
-                        let newBook = Book(
-                            id: booksAlreadyRead.count + 1,
-                            name: newBookName,
-                            author: newBookAuthor
-                        )
-                        // Add to top of list
-                        booksAlreadyRead.insert(newBook, at: 0)
+                        Task {
+                            response = try await getBookRecommendations()
+                        }
                     } label: {
-                        Text("Add")
+                        Text("Get Book Recommendations")
                     }
                     .buttonStyle(.borderedProminent)
-                }
-                
-                // Show the books the user has entered
-                List(booksAlreadyRead) { book in
-                    VStack(alignment: .leading) {
-                        Text(book.name)
-                            .bold()
-                        Text(book.name)
-                            .font(.subheadline)
-                    }
-                }
-                .listStyle(.plain)
-                .frame(height: 200)
-                                
-                // Allow user to ask for book recommendations
-                Button {
-                    Task {
-                        response = try await getBookRecommendation()
-                    }
-                } label: {
-                    Text("Get Book Recommendations")
-                }
-                .buttonStyle(.borderedProminent)
 
-                // Only show the text view when there is a response...
-                if let response = response {
-                    Text(response)
-                        .monospaced()
-                }
-                
-                Spacer()
+                    // Only show the text view when there is a response...
+                    if let response = response {
+                        
+                        Group {
+                            Text("Here are some new books you might enjoy...")
+                                .font(.title3)
+                                .bold()
+                            
+                            // Show the book recommendations
+                            List(bookSuggestions) { book in
+                                VStack(alignment: .leading) {
+                                    Text(book.name)
+                                        .bold()
+                                    Text(book.author)
+                                        .font(.subheadline)
+                                }
+                            }
+                            .listStyle(.plain)
+                            .frame(height: 200)
 
+                        }
+                    }
+                    
+                    Spacer()
+
+                }
+                .padding()
             }
-            .padding()
             .navigationTitle("Fancy Test")
+        }
+        .onChange(of: response) {
+            // When there is a non-nil response from ChatGPT, decode it into an array of suggestions
+            // NOTE: This is a good reference for tips on encoding and decoding JSON
+            //       https://www.swiftyplace.com/blog/codable-how-to-simplify-converting-json-data-to-swift-objects-and-vice-versa
+            if let response = response {
+                
+                let decoder = JSONDecoder()
+                do {
+
+                    // Turn the string into an instanc of the Data type (required to decode from JSON)
+                    let data = Data(response.utf8)
+                    
+                    // Try to decode ChatGPT's response into an array of book suggestions
+                    bookSuggestions = try decoder.decode([Book].self, from: data)
+                    
+                } catch {
+                    debugPrint(error)
+                }
+                
+            }
         }
     }
     
     // MARK: Functions
-    private func getBookRecommendation() async throws -> String? {
+    private func getBookRecommendations() async throws -> String? {
         
         // Encode the list of books to JSON
         let encoder = JSONEncoder()
@@ -110,7 +152,14 @@ struct FancyView: View {
         do {
             let jsonData = try encoder.encode(booksAlreadyRead)
             if let jsonString = String(data: jsonData, encoding: .utf8) {
+                
+                // DEBUG
+                print("Books the user has read, encoded in JSON, are:")
+                print("")
                 print(jsonString)
+                
+                
+                // Assign the encoded JSON to a variable we'll use later to build the question
                 booksListInJSON = jsonString
             }
         } catch {
@@ -164,6 +213,12 @@ struct FancyView: View {
         do {
             // Execute the query
             let result = try await openAI.chats(query: query)
+            
+            // DEBUG: What was the response?
+            print("=====")
+            print("Result from ChatGPT was...")
+            print("")
+            print(result)
             
             // Once query is received, return the response
             return result.choices.first?.message.content?.string ?? nil

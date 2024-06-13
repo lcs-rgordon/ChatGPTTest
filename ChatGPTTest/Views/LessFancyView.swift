@@ -20,7 +20,7 @@ struct LessFancyView: View {
                 VStack {
                     Button {
                         Task {
-                            response = try await getBookRecommendation()
+                            response = try await getBookRecommendations()
                         }
                     } label: {
                         Text("Get Book Recommendations")
@@ -40,7 +40,7 @@ struct LessFancyView: View {
     }
     
     // MARK: Functions
-    private func getBookRecommendation() async throws -> String? {
+    private func getBookRecommendations() async throws -> String? {
 
         // NOTE: See Mr. Gordon to obtain your API key.
         //
