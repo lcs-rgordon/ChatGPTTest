@@ -11,6 +11,7 @@
 		814F2DF82C19D85E0052A922 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2DF72C19D85E0052A922 /* ContentView.swift */; };
 		814F2DFA2C19D8600052A922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814F2DF92C19D8600052A922 /* Assets.xcassets */; };
 		814F2DFD2C19D8600052A922 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814F2DFC2C19D8600052A922 /* Preview Assets.xcassets */; };
+		814F2E3A2C1AF9D00052A922 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 814F2E392C1AF9D00052A922 /* OpenAI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814F2E3A2C1AF9D00052A922 /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = ChatGPTTest;
+			packageProductDependencies = (
+				814F2E392C1AF9D00052A922 /* OpenAI */,
+			);
 			productName = ChatGPTTest;
 			productReference = 814F2DF22C19D85E0052A922 /* ChatGPTTest.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 814F2DE92C19D85E0052A922;
+			packageReferences = (
+				814F2E382C1AF9D00052A922 /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
 			productRefGroup = 814F2DF32C19D85E0052A922 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -344,6 +352,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		814F2E382C1AF9D00052A922 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		814F2E392C1AF9D00052A922 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 814F2E382C1AF9D00052A922 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 814F2DEA2C19D85E0052A922 /* Project object */;
 }
