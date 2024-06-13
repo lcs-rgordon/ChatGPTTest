@@ -23,7 +23,7 @@ struct ContentView: View {
                             response = try await getBookRecommendation()
                         }
                     } label: {
-                        Text("Ask")
+                        Text("Get Book Recommendation")
                     }
                     .buttonStyle(.borderedProminent)
 
