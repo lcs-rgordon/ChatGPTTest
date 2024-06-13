@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct ChatGPTTestApp: App {
+    
+    // MARK: Stored properties
+    @State private var tab: Int = 1
+    
+    // MARK: Computed properties
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LandingView(selectedTab: $tab)
         }
     }
 }

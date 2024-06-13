@@ -8,7 +8,7 @@
 import OpenAI
 import SwiftUI
 
-struct ContentView: View {
+struct LessFancyView: View {
     
     // MARK: Stored properties
     @State private var response: String? = nil
@@ -103,5 +103,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    LandingView(selectedTab: Binding.constant(1))
 }

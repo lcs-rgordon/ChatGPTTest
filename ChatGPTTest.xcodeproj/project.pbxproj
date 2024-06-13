@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		814F2DF62C19D85E0052A922 /* ChatGPTTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2DF52C19D85E0052A922 /* ChatGPTTestApp.swift */; };
-		814F2DF82C19D85E0052A922 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2DF72C19D85E0052A922 /* ContentView.swift */; };
+		814F2DF82C19D85E0052A922 /* LessFancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2DF72C19D85E0052A922 /* LessFancyView.swift */; };
 		814F2DFA2C19D8600052A922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814F2DF92C19D8600052A922 /* Assets.xcassets */; };
 		814F2DFD2C19D8600052A922 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814F2DFC2C19D8600052A922 /* Preview Assets.xcassets */; };
 		814F2E3A2C1AF9D00052A922 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 814F2E392C1AF9D00052A922 /* OpenAI */; };
 		814F2E3D2C1B018A0052A922 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2E3C2C1B018A0052A922 /* Secrets.swift */; };
+		814F2E402C1B05360052A922 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2E3F2C1B05360052A922 /* FancyView.swift */; };
+		814F2E422C1B05450052A922 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2E412C1B05450052A922 /* LandingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		814F2DF22C19D85E0052A922 /* ChatGPTTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatGPTTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		814F2DF52C19D85E0052A922 /* ChatGPTTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTTestApp.swift; sourceTree = "<group>"; };
-		814F2DF72C19D85E0052A922 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		814F2DF72C19D85E0052A922 /* LessFancyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessFancyView.swift; sourceTree = "<group>"; };
 		814F2DF92C19D8600052A922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		814F2DFC2C19D8600052A922 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		814F2E3C2C1B018A0052A922 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		814F2E3F2C1B05360052A922 /* FancyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		814F2E412C1B05450052A922 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,7 @@
 			children = (
 				814F2DF52C19D85E0052A922 /* ChatGPTTestApp.swift */,
 				814F2E3B2C1B017A0052A922 /* Helpers */,
-				814F2DF72C19D85E0052A922 /* ContentView.swift */,
+				814F2E3E2C1B05040052A922 /* Views */,
 				814F2DF92C19D8600052A922 /* Assets.xcassets */,
 				814F2DFB2C19D8600052A922 /* Preview Content */,
 			);
@@ -78,6 +82,16 @@
 				814F2E3C2C1B018A0052A922 /* Secrets.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		814F2E3E2C1B05040052A922 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				814F2E3F2C1B05360052A922 /* FancyView.swift */,
+				814F2E412C1B05450052A922 /* LandingView.swift */,
+				814F2DF72C19D85E0052A922 /* LessFancyView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				814F2DF82C19D85E0052A922 /* ContentView.swift in Sources */,
+				814F2DF82C19D85E0052A922 /* LessFancyView.swift in Sources */,
+				814F2E422C1B05450052A922 /* LandingView.swift in Sources */,
 				814F2E3D2C1B018A0052A922 /* Secrets.swift in Sources */,
+				814F2E402C1B05360052A922 /* FancyView.swift in Sources */,
 				814F2DF62C19D85E0052A922 /* ChatGPTTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
