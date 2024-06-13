@@ -7,9 +7,69 @@
 
 import SwiftUI
 
+// MODEL
+struct Book: Identifiable, Codable {
+    let id: Int
+    let name: String
+    let author: String
+}
+
+let exampleBooks = [
+    Book(id: 1, name: "Outlander", author: "Diana Gabaldon"),
+    Book(id: 2, name: "The Mountain in the Sea", author: "Ray Nayler"),
+]
+
+// VIEW
 struct FancyView: View {
+    
+    // MARK: Stored properties
+    
+    // Keeps track of the books the user already likes
+    @State private var booksAlreadyRead: [Book] = exampleBooks
+    
+    // Keeps track of the book a user is entering
+    @State private var newBookName = ""
+    @State private var newBookAuthor = ""
+        
+    // MARK: Computed properties
     var body: some View {
-        Text("This view will ask the user for books they have read, so the query can be adjusted.")
+        NavigationStack {
+            VStack(alignment: .leading) {
+
+                // Controls to add a book the user has liked
+                Group {
+                    Text("Please add a few books that you've liked")
+                        .font(.title3)
+                    TextField("Name of book", text: $newBookName)
+                        .textFieldStyle(.roundedBorder)
+                    TextField("Author of book", text: $newBookAuthor)
+                        .textFieldStyle(.roundedBorder)
+
+                    Button {
+                        // Add the book to the list of books the user likes
+                    } label: {
+                        Text("Add")
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                
+                // Show the books the user has entered
+                List(booksAlreadyRead) { book in
+                    VStack(alignment: .leading) {
+                        Text(book.name)
+                            .bold()
+                        Text(book.name)
+                            .font(.subheadline)
+                    }
+                }
+                .listStyle(.plain)
+                
+                Spacer()
+
+            }
+            .padding()
+            .navigationTitle("Fancy Test")
+        }
     }
 }
 

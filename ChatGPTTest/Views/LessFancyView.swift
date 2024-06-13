@@ -35,6 +35,7 @@ struct LessFancyView: View {
                 }
                 .padding()
             }
+            .navigationTitle("Less Fancy Test")
         }
     }
     
@@ -57,18 +58,21 @@ struct LessFancyView: View {
 
                     I am providing the information to you in JSON format, with two name-value pairs describing the name and author of each book.
 
-                    Using the same JSON structure, please give me a recommendation for a new book to read.
+                    Using the same JSON structure, please give me a recommendation for three new books to read.
 
                     [
                     {
+                        id: 1,
                         name: "Outlander",
                         author: "Diana Gabaldon"
                     },
                     {
+                        id: 2,
                         name: "The Mountain in the Sea"
                         author: "Ray Nayler"
                     },
                     {
+                        id: 3,
                         name: "Dark Matter",
                         author: "Blake Crouch"
                     }
