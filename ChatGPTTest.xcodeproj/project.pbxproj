@@ -12,6 +12,7 @@
 		814F2DFA2C19D8600052A922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814F2DF92C19D8600052A922 /* Assets.xcassets */; };
 		814F2DFD2C19D8600052A922 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814F2DFC2C19D8600052A922 /* Preview Assets.xcassets */; };
 		814F2E3A2C1AF9D00052A922 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 814F2E392C1AF9D00052A922 /* OpenAI */; };
+		814F2E3D2C1B018A0052A922 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814F2E3C2C1B018A0052A922 /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		814F2DF72C19D85E0052A922 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		814F2DF92C19D8600052A922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		814F2DFC2C19D8600052A922 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		814F2E3C2C1B018A0052A922 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				814F2DF52C19D85E0052A922 /* ChatGPTTestApp.swift */,
+				814F2E3B2C1B017A0052A922 /* Helpers */,
 				814F2DF72C19D85E0052A922 /* ContentView.swift */,
 				814F2DF92C19D8600052A922 /* Assets.xcassets */,
 				814F2DFB2C19D8600052A922 /* Preview Content */,
@@ -67,6 +70,14 @@
 				814F2DFC2C19D8600052A922 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		814F2E3B2C1B017A0052A922 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				814F2E3C2C1B018A0052A922 /* Secrets.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				814F2DF82C19D85E0052A922 /* ContentView.swift in Sources */,
+				814F2E3D2C1B018A0052A922 /* Secrets.swift in Sources */,
 				814F2DF62C19D85E0052A922 /* ChatGPTTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
